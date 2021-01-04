@@ -26,7 +26,7 @@ public class BlogServiceImpl implements BlogService {
     private SubscriptionService subscriptionService;
 
     @Override
-    public Set<Post> getBlogPosts(@NonNull Long blogId, @NonNull Long accountId) {
+    public Set<Post> getPostsOfBlog(@NonNull Long blogId, @NonNull Long accountId) {
         Blog blog = blogRepository.findById(blogId)
                 .orElseThrow(Exceptions.notFound("blog"));
         Account account = accountRepository.findById(accountId)

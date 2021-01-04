@@ -1,0 +1,25 @@
+= Описание API по постам в блоге
+
+== Методы
+
+|===
+|Метод | Назначение
+|`GET`
+|Получить сущности
+|===
+
+=== Публикация курса
+
+Получить доступные посты в блоге для пользователя
+
+.request
+
+include::../../../target/snippets/getting_posts/http-request.adoc[]
+
+.response
+
+include::../../../target/snippets/getting_posts/http-response.adoc[]
+
+.response-fields
+
+include::../../../target/snippets/getting_posts/response-fields.adoc[]

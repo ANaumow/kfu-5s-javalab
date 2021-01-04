@@ -1,6 +1,9 @@
 package ru.naumow.project.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.hateoas.RepresentationModel;
 
@@ -8,9 +11,12 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "post")
-public class Post extends RepresentationModel<Post> {
+public class Post {
     @Id
     @GeneratedValue
     private Long id;

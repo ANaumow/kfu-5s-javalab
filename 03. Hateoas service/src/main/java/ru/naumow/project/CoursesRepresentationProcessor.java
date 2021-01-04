@@ -19,7 +19,8 @@ public class CoursesRepresentationProcessor implements RepresentationModelProces
     public EntityModel<Blog> process(EntityModel<Blog> model) {
         Blog blog = model.getContent();
         if (blog != null) {
-            Link getPostsForAccount = linkTo(methodOn(BlogController.class).getBlogPosts(model.getContent().getId(), null))
+            Link getPostsForAccount = linkTo(methodOn(BlogController.class)
+                    .getPostsOfBlog(model.getContent().getId(), null))
                     .withRel("posts-for-account");
             Link subscribe = linkTo(methodOn(BlogController.class).subscribe(blog.getId(), null))
                     .withRel("subscribe");

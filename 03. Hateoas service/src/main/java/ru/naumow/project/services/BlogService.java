@@ -6,6 +6,6 @@ import java.util.Set;
 
 public interface BlogService {
 
-    Set<Post> getBlogPosts(Long blogId, Long accountId);
+    Set<Post> getPostsOfBlog(Long blogId, Long accountId);
 
 }
