@@ -1,0 +1,98 @@
+// создаем продукт, info - вложенная сущность
+db.product.insertOne(
+  {
+    name: 'name1',
+    info: {
+      weight: 230,
+      height: 134,
+      width: 32,
+      length: 45
+    }
+  }
+  );
+
+// создаем продукт, info - вложенная сущность
+db.product.insertOne(
+  {
+    name: 'name2',
+    info: {
+      weight: 430,
+      height: 534,
+      width: 33,
+      length: 445
+    }
+  }
+  );
+
+// создаем продукт, owner - вложенная сущность
+db.vendor.insertOne(
+  {
+    name: 'vendor1',
+    owner: {
+      firstname: 'Ivan',
+      lastname: 'Ivanov'
+    }
+  }
+  );
+
+// создаем продукт, owner - вложенная сущность
+db.vendor.insertOne(
+  {
+    name: 'vendor2',
+    owner: {
+      inn: '4532343566'
+    }
+  }
+  );
+
+// создаем магазин, address - вложенная сущность
+db.market.insertOne(
+  {
+    name: 'market1',
+    address: {
+      street: 'lenina',
+      house: '43',
+      index: '420001'
+    }
+  }
+  );
+
+// находим продукт с именем "name1", добавляем новое поле с именем "vendor"
+db.product.updateOne(
+  { name: 'name1' },
+  {
+    $set: {
+      vendor: ObjectId('5fe91b0fcfbcff09a0f192ca')
+    }
+  }
+  );
+
+// находим магазин с именем "market1", добавляем поле с именем "products", в котором лежит массив объектов
+db.market.updateOne(
+  { name: 'market1' },
+  {
+    $set: {
+      products: [
+        ObjectId('5fe9191fcfbcff09a0f192c5'),
+        ObjectId('5fe91b0fcfbcff09a0f192c8')
+      ]
+    }
+  }
+  );
+
+// находим магазин, который содержит определенный продукт
+db.market.findOne(
+  {
+    products: {
+      $elemMatch: { $eq: ObjectId('5fe9191fcfbcff09a0f192c5') }
+    }
+  }
+  );
+
+// находим производителя с именем "vendor1" и удаляем его
+db.vendor.findOneAndDelete(
+  {
+    name: 'vendor1'
+  }
+  );
+
